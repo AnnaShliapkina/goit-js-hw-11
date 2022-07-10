@@ -52,6 +52,8 @@ function onSearchForm(e) {
       }
     })
     .catch(error => console.log(error));
+  // e.currentTarget.reset;
+  searchForm.reset();
 }
 
 function onLoadMoreBtn() {
@@ -65,7 +67,7 @@ function onLoadMoreBtn() {
 
       const totalPages = Math.ceil(data.totalHits / perPage);
 
-      if (page > totalPages) {
+      if (page >= totalPages) {
         loadMoreBtn.classList.add('is-hidden');
 
         Notiflix.Notify.failure(
@@ -75,3 +77,5 @@ function onLoadMoreBtn() {
     })
     .catch(error => console.log(error));
 }
+
+searchForm.reset();
